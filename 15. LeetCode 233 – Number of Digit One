@@ -1,0 +1,21 @@
+class Solution {
+    public int countDigitOne(int n) {
+
+        long count = 0;
+
+        for (long i = 1; i <= n; i = i * 10) {
+
+            long divider = i * 10;
+
+            count = count + (n / divider) * i;
+
+            long remainder = n % divider;
+
+            count = count + Math.min(
+                Math.max(remainder - i + 1, 0), i
+            );
+        }
+
+        return (int) count;
+    }
+}
